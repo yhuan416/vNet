@@ -10,19 +10,19 @@
 
 typedef struct _vNet
 {
-    
+    ikcpcb *kcp;
 } vNet;
 
 /**
- * @brief 创建一个vNet对象
+ * @brief 主动连接对端
  * 
  * @param net [in|out] vNet对象
  * @param peer [in] 对端地址描述: tcp:0.0.0.0:80 | udp:127.0.0.1:53 | uart:/dev/ttyS0:115200
  * @return int32_t 0:成功; -1:失败
  */
-int32_t vNetCreate(vNet *net, const char *peer);
+int32_t vNetConnect(vNet *net, const char *peer);
 
-void vNetDestroy(vNet *net);
+void vNetClose(vNet *net);
 
 int32_t vNetSend(vNet *net, const uint8_t *data, uint32_t len);
 
